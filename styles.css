@@ -1,0 +1,157 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 60px;
+}
+
+header {
+    background-color: #4caf50;
+    padding: 15px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    flex-grow: 1;
+}
+
+.tab {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.tab button {
+    background-color: #45a049;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: #4caf50;
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 2;
+}
+
+.user-info input[type="range"] {
+    width: 80%;
+    margin: 10px 0;
+}
+
+.user-info input[type="text"] {
+    width: 80%;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.block {
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+}
+
+
+.user-info input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+
+.large-text {
+    font-size: 18px;
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    display: inline-block;
+}
+
+.menu-button {
+    background-color: #45a049;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.menu-content button {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    outline: none;
+}
+
+.menu-content button:hover {
+    background-color: #ddd;
+}
