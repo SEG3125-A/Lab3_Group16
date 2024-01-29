@@ -1,5 +1,12 @@
 var products = [
-
+    {
+        name: "Bananas",
+        vegetarian: true,
+        glutenFree: true,
+        organic: true,
+        price: 1.00,
+        category: "Fruits"
+    },
     {
         name: "Carrots",
         vegetarian: true,
@@ -8,6 +15,15 @@ var products = [
         price: 1.25,
         category: "Vegetables"
     },
+    {
+        name: "Apples",
+        vegetarian: true,
+        glutenFree: true,
+        organic: true,
+        price: 1.50,
+        category: "Fruits"
+    },
+
     {
         name: "Corn",
         vegetarian: true,
@@ -99,7 +115,7 @@ document.querySelector('button[onclick="openInfo(event, \'Customer\')"]').classL
 function populateListProductChoices() {
     let restriction = document.getElementById('dietSelect').value;
     let organic = document.getElementById('organicSelect').checked;
-    let budgetFriendly = document.getElementById('budgetToggle').checked;
+    let budgetFriendly = document.getElementById('budgetToggle');
 
     document.getElementById('displayProduct').innerHTML = "";
 
@@ -116,10 +132,10 @@ function populateListProductChoices() {
         }
     });
 
-    if (budgetFriendly) {
+
         let budgetSliderValue = document.getElementById('budgetSlider').value;
         filteredList = filteredList.filter(product => product.price <= budgetSliderValue);
-    }
+
 
     for (let i = 0; i < filteredList.length; i++) {
         let productName = filteredList[i].name;
