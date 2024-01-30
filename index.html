@@ -16,7 +16,15 @@
         <button class="menu-button" onclick="toggleMenu()">Menu</button>
         <div class="menu-content" id="menuDropdown">
             <button class="tablinks" onclick="openInfo(event, 'Customer')">Customer</button>
-            <button class="tablinks" onclick="openInfo(event, 'Products')">Products</button>
+            <button class="tablinks" onclick="openInfo(event, 'Products')">Products
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container" id="productsDropdown">
+                <button onclick="filterByCategory('Fruits')">Fruits</button>
+                <button onclick="filterByCategory('Vegetables')">Vegetables</button>
+                <button onclick="filterByCategory('Meats')">Meats</button>
+                <button onclick="filterByCategory('Dairy')">Dairy</button>
+            </div>
             <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
         </div>
     </div>
@@ -44,7 +52,6 @@
 
         <label for="organicSelect">Organic Preference:</label>
         <input type="checkbox" id="organicSelect" name="organicSelect" onchange="populateListProductChoices()">
-
 
 
         <label for="visionToggle">Vision-Friendly:</label>

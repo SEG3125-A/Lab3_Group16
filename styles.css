@@ -155,3 +155,33 @@ footer {
 .menu-content button:hover {
     background-color: #ddd;
 }
+
+
+.dropdown-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-container button {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: #333;
+    transition: background-color 0.3s;
+
+    .dropdown-container button:hover {
+        background-color: #ddd;
+    }
+}

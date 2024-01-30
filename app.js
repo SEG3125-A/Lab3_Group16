@@ -315,4 +315,19 @@ function searchProduct(event) {
     } else {
         alert("Please enter a search term.");
     }
+
 }
+function filterByCategory(category) {
+    document.getElementById('dietSelect').value = category;
+    populateListProductChoices();
+}
+
+
+var productsDropdown = document.getElementById("productsDropdown");
+document.querySelector('.tablinks:nth-child(2)').addEventListener("click", function() {
+    if (productsDropdown.style.display === "block") {
+        productsDropdown.style.display = "none";
+    } else {
+        productsDropdown.style.display = "block";
+    }
+});
