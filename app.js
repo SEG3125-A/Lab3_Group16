@@ -192,6 +192,7 @@ function displayTotalPrice() {
 }
 
 function openInfo(evt, tabName) {
+    document.getElementById("menuDropdown").style.display = "none";
     tabcontent = document.getElementsByClassName("tabcontent");
     for (let i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
@@ -294,7 +295,7 @@ function filterByCategory(category) {
 
 
 var productsDropdown = document.getElementById("productsDropdown");
-document.querySelector('.tablinks:nth-child(2)').addEventListener("click", function() {
+document.querySelector('.tablinks:nth-child(2)').addEventListener("mouseover", function() {
     if (productsDropdown.style.display === "block") {
         productsDropdown.style.display = "none";
     } else {

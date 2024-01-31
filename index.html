@@ -20,10 +20,10 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container" id="productsDropdown">
-                <button onclick="filterByCategory('Fruits')">Fruits</button>
-                <button onclick="filterByCategory('Vegetables')">Vegetables</button>
-                <button onclick="filterByCategory('Meats')">Meats</button>
-                <button onclick="filterByCategory('Dairy')">Dairy</button>
+                <button onclick="filterByCategory('Fruits'); openInfo(event, 'Products')">Fruits</button>
+                <button onclick="filterByCategory('Vegetables'); openInfo(event, 'Products')">Vegetables</button>
+                <button onclick="filterByCategory('Meats'); openInfo(event, 'Products')">Meats</button>
+                <button onclick="filterByCategory('Dairy'); openInfo(event, 'Products')">Dairy</button>
             </div>
             <button class="tablinks" onclick="openInfo(event, 'Cart')">Cart</button>
         </div>
