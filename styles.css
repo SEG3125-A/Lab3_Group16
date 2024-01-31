@@ -152,6 +152,10 @@ footer {
     outline: none;
 }
 
+#accessibleText img {
+    height: 100px;
+}
+
 .menu-content button:hover {
     background-color: #ddd;
 }

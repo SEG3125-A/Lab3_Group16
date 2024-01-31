@@ -115,7 +115,6 @@ document.querySelector('button[onclick="openInfo(event, \'Customer\')"]').classL
 function populateListProductChoices() {
     let restriction = document.getElementById('dietSelect').value;
     let organic = document.getElementById('organicSelect').checked;
-    let budgetFriendly = document.getElementById('budgetToggle');
 
     document.getElementById('displayProduct').innerHTML = "";
 
@@ -133,40 +132,11 @@ function populateListProductChoices() {
     });
 
 
-        let budgetSliderValue = document.getElementById('budgetSlider').value;
-        filteredList = filteredList.filter(product => product.price <= budgetSliderValue);
+    let budgetSliderValue = document.getElementById('budgetSlider').value;
+    filteredList = filteredList.filter(product => product.price <= budgetSliderValue);
 
 
-    for (let i = 0; i < filteredList.length; i++) {
-        let productName = filteredList[i].name;
-
-        let productCard = document.createElement("div");
-        productCard.className = "product-card";
-
-        let productImage = document.createElement("img");
-        productImage.src = "images/" + productName.toLowerCase() + ".png";
-        productImage.alt = productName;
-        productCard.appendChild(productImage);
-
-        let label = document.createElement('label');
-        label.htmlFor = productName;
-        label.appendChild(document.createTextNode(productName));
-        productCard.appendChild(label);
-
-        let priceLabel = document.createElement('p');
-        priceLabel.appendChild(document.createTextNode("Price: $" + getProductPrice(productName).toFixed(2)));
-        productCard.appendChild(priceLabel);
-
-        let quantityInput = document.createElement("input");
-        quantityInput.type = "number";
-        quantityInput.min = "0";
-        quantityInput.value = "0";
-        quantityInput.className = "product-qty";
-        quantityInput.id = productName;
-        productCard.appendChild(quantityInput);
-
-        document.getElementById('displayProduct').appendChild(productCard);
-    }
+    displayResults(filteredList)
 }
 
 function selectedItems() {
@@ -234,7 +204,6 @@ function openInfo(evt, tabName) {
 
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.classList.add("active");
-    populateListProductChoices();
 }
 
 function toggleMenu() {
@@ -264,7 +233,7 @@ function orderByPrice(products, ascending) {
     });
 }
 
-function displaySearchResults(results) {
+function displayResults(results) {
     document.getElementById('displayProduct').innerHTML = "";
 
     for (let i = 0; i < results.length; i++) {
@@ -299,15 +268,16 @@ function displaySearchResults(results) {
     }
 }
 
-function searchProduct(event) {
+function searchProduct() {
     event.preventDefault();
 
     let searchText = document.getElementById('searchField').value.toLowerCase().trim();
 
     if (searchText !== "") {
         let foundProducts = products.filter(product => product.name.toLowerCase().includes(searchText));
+        console.log(foundProducts)
         if (foundProducts.length > 0) {
-            displaySearchResults(foundProducts);
+            displayResults(foundProducts);
             openInfo(event, 'Products');
         } else {
             alert("No products found matching the search term.");
