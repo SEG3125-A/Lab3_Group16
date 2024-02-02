@@ -112,21 +112,26 @@ var cart = new Map();
 document.getElementById('Customer').style.display = 'block';
 document.querySelector('button[onclick="openInfo(event, \'Customer\')"]').classList.add("active");
 
-function populateListProductChoices() {
+function  populateListProductChoices() {
+    filterProducts(products);
+}
+
+function filterProducts(prods) {
+    console.log("here!")
     let restriction = document.getElementById('dietSelect').value;
     let organic = document.getElementById('organicSelect').checked;
 
     document.getElementById('displayProduct').innerHTML = "";
 
-    let filteredList = products.filter(product => {
+    let filteredList = prods.filter(product => {
         if (organic && !product.organic) {
             return false;
         } else {
             return (
-                (product.vegetarian && restriction === 'Vegetarian') ||
+                ((product.vegetarian && restriction === 'Vegetarian') ||
                 (product.glutenFree && restriction === 'GlutenFree') ||
                 (product.category === restriction) ||
-                restriction === 'All'
+                (restriction === 'All'))
             );
         }
     });
@@ -137,6 +142,26 @@ function populateListProductChoices() {
 
 
     displayResults(filteredList)
+}
+
+//searching for a product respects the customers preferances
+function searchProduct() {
+    event.preventDefault();
+
+    let searchText = document.getElementById('searchField').value.toLowerCase().trim();
+    if (searchText !== "") {
+        let foundProducts = products.filter(product => product.name.toLowerCase().includes(searchText));
+        if (foundProducts.length > 0) {
+            filterProducts(foundProducts)
+            openInfo(event, 'Products');
+        } else {
+            alert("No products found matching the search term.");
+            return false
+        }
+    } else {
+        alert("Please enter a search term.");
+        return false
+    }
 }
 
 function selectedItems() {
@@ -236,6 +261,20 @@ function orderByPrice(products, ascending) {
 
 function displayResults(results) {
     document.getElementById('displayProduct').innerHTML = "";
+    document.getElementById('message').innerHTML = ""
+
+    //sort from lowest to highest
+    results.sort((a, b) => {
+        return a.price < b.price
+    })
+
+    let message = ""
+    if (results.length === 0) {
+        message = "No products match your search and preferences"
+    } else {
+        message = "We preselected products based on your preferences."
+    }
+    document.getElementById('message').appendChild(document.createTextNode(message))
 
     for (let i = 0; i < results.length; i++) {
         let productName = results[i].name;
@@ -269,25 +308,7 @@ function displayResults(results) {
     }
 }
 
-function searchProduct() {
-    event.preventDefault();
 
-    let searchText = document.getElementById('searchField').value.toLowerCase().trim();
-
-    if (searchText !== "") {
-        let foundProducts = products.filter(product => product.name.toLowerCase().includes(searchText));
-        console.log(foundProducts)
-        if (foundProducts.length > 0) {
-            displayResults(foundProducts);
-            openInfo(event, 'Products');
-        } else {
-            alert("No products found matching the search term.");
-        }
-    } else {
-        alert("Please enter a search term.");
-    }
-
-}
 function filterByCategory(category) {
     document.getElementById('dietSelect').value = category;
     populateListProductChoices();
