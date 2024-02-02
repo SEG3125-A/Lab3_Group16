@@ -1,3 +1,5 @@
+var largeText = false
+
 var products = [
     {
         name: "Bananas",
@@ -243,10 +245,11 @@ function updateBudgetText() {
 }
 
 function adjustFontSize() {
-    let visionToggle = document.getElementById('visionToggle');
     let body = document.querySelector('body');
 
-    if (visionToggle.checked) {
+    largeText = !largeText
+
+    if (largeText) {
         body.classList.add('large-text');
     } else {
         body.classList.remove('large-text');
